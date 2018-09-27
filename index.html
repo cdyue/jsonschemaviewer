@@ -8,12 +8,12 @@
     <title>JSON Schema Viewer</title>
 
     <!-- Bootstrap -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/OpenSans.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/jsv.css">
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    <link rel="stylesheet" href="css/nprogress.min.css">
+    <script src="js/nprogress.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,37 +33,78 @@
     
     <!-- Editor -->
     <div id="editor">{
-    	"title": "Example Schema",
-    	"type": "object",
-    	"properties": {
-    		"firstName": {
-    			"type": "string"
-    		},
-    		"lastName": {
-    			"type": "string"
-    		},
-    		"age": {
-    			"description": "Age in years",
-    			"type": "integer",
-    			"minimum": 0
-    		}
-    	},
-    	"required": ["firstName", "lastName"]
-    }</div>
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Product Set",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dimensions": {
+            "type": "object",
+            "properties": {
+              "length": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              }
+            }
+          },
+          "warehouseLocation": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "number"
+              },
+              "longitude": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "price",
+          "dimensions",
+          "warehouseLocation"
+        ],
+        "title": "Product"
+      }
+    }
+    </div>
     
     <!-- JSV -->
     <div id="main-body"></div>
     <script>
       NProgress.start();
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/mode-json.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/theme-chrome.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tv4/1.2.7/tv4.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ace.js"></script>
+    <script src="js/mode-json.js"></script>
+    <script src="js/theme-chrome.js"></script>
+    <script src="js/lodash.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/tv4.min.js"></script>
     <script src="js/jsv.js"></script>
     <script src="js/ref-parser.min.js"></script>
     <script src="js/app.js"></script>
